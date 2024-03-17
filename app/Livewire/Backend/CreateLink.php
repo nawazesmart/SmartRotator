@@ -16,7 +16,7 @@ class CreateLink extends Component
         'short_link' => ['required', 'unique:short_links,main_link'],
     ])]
 
-    public $link_name, $description, $custom_url = 0, $short_link;
+    public $link_name, $description, $custom_url = 0, $short_link, $type = "direct";
     public $inputs = [];
 
     public function mount()
@@ -66,6 +66,7 @@ class CreateLink extends Component
             'name' => $this->link_name,
             'description' => $this->description,
             'main_link' => $main_link,
+            'type' => $this->type,
         ]);
 
         foreach ($this->inputs as $item) {

@@ -17,8 +17,8 @@ return new class extends Migration
             $table->text('name');
             $table->text('description')->nullable();
             $table->text('main_link');
+            $table->enum('type', ['direct', 'frame', 'counter']);
             $table->boolean('status')->default(1);
-            $table->integer('click')->default(0);
             $table->timestamps();
         });
     }

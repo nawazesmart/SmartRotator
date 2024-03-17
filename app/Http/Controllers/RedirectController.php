@@ -16,8 +16,6 @@ class RedirectController extends Controller
 
             if ($short_link->status == true) {
 
-                $short_link->increment('click');
-
                 $links = ShortLinkDetail::where('short_link_id', $short_link->id)->get();
 
                 foreach ($links as $index => $item) {

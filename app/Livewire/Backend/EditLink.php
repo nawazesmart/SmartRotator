@@ -16,7 +16,7 @@ class EditLink extends Component
         'short_link' => ['required'],
     ])]
 
-    public $id, $link_name, $description, $custom_url = 1, $short_link;
+    public $id, $link_name, $description, $custom_url = 1, $short_link, $type = "direct";
     public $inputs = [];
 
     public function mount()
@@ -27,6 +27,7 @@ class EditLink extends Component
             $this->link_name = $short_link->name;
             $this->description = $short_link->description;
             $this->short_link = $short_link->main_link;
+            $this->type = $short_link->type;
 
             $link_details = ShortLinkDetail::where('short_link_id', $short_link->id)->get();
 
@@ -87,11 +88,12 @@ class EditLink extends Component
 
         $main_link = $this->short_link;
 
-        $short_link_id = ShortLink::find($this->id)->update([
+        ShortLink::find($this->id)->update([
             'user_id' => Auth::user()->id,
             'name' => $this->link_name,
             'description' => $this->description,
             'main_link' => $main_link,
+            'type' => $this->type,
         ]);
 
         foreach ($this->inputs as $item) {

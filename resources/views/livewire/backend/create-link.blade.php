@@ -27,11 +27,20 @@
                     @error('description')<small class="text-danger">{{ $message }}</small>@enderror
                 </div>
                 <div class="mb-3">
+                    <label for="defaultSelect" class="form-label">Type</label>
+                    <select id="defaultSelect" wire:model.live="type" class="form-select">
+                        <option value="direct">Direct</option>
+                        <option value="frame">Frame</option>
+                        <option value="counter">Counter</option>
+                    </select>
+                </div>
+                <div class="mb-3">
                     <div class="form-check form-switch">
                         <input class="form-check-input" wire:model.live="custom_url" type="checkbox" id="flexSwitchCheckDefault">
                         <label class="form-check-label" for="flexSwitchCheckDefault">Custom URL</label>
                     </div>
                 </div>
+                
                 @if ($custom_url == 1)
                 <div class="mb-3">
                     <div class="input-group input-group-merge">
