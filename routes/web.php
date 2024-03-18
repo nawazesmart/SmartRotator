@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Auth\ChangePasswordController;
 use App\Http\Controllers\Auth\EmailVerificationController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -29,6 +31,12 @@ Route::middleware(['guest'])->group(function () {
 });
 
 Route::get('/logout', [LogoutController::class, 'index'])->name('logout');
+//Forgot Password
+Route::get('forgot-password', [ForgotPasswordController::class, 'index'])->name('forgotPassword');
+Route::get('forgot-password/send-mail/{id}', [ForgotPasswordController::class, 'sendMail'])->name('forgotPasswordSendMail');
+Route::get('forgot-password/verification/{id}/{token}', [ForgotPasswordController::class, 'varification'])->name('forgotPasswordVerification');
+
+Route::get('change-password/{id}/{token}', [ChangePasswordController::class, 'index'])->name('changePassword');
 
 //Email Verification
 Route::get('/send-mail/{id}', [EmailVerificationController::class, 'sendMail'])->name('sendMail');
