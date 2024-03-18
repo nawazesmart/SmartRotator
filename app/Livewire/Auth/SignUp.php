@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
+use Spatie\Permission\Models\Role;
 
 class SignUp extends Component
 {
@@ -33,8 +34,8 @@ class SignUp extends Component
             'password' => Hash::make($this->password),
         ]);
 
-        // $role = ModelsRole::find(2);
-        // $user->assignRole($role);
+        $role = Role::find(2);
+        $user->assignRole($role);
 
         $this->resetInput();
 

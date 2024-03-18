@@ -11,7 +11,7 @@
   }
   #counter {
     font-size: 24px;
-    margin-top: 50px;
+    margin-top: 25%;
   }
 </style>
 </head>

@@ -8,15 +8,11 @@
 </head>
 <body>
     <script>
-    // Function to redirect after countdown
-    function redirect(url) {
-        window.location.href = url;
-    }
 
     // Call the countdown function on page load with dynamic URL passed from Laravel
     window.onload = function() {
         const dynamicUrl = "{{ $link }}"; // Accessing the URL passed from Laravel
-        redirect(dynamicUrl);
+        window.location.href = dynamicUrl;
     };
     </script>
 </body>

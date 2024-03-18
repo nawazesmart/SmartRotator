@@ -9,9 +9,22 @@ use Illuminate\Http\Request;
 
 class ShortLinkController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['permission:view all links'])->only('index');
+        $this->middleware(['permission:view links'])->only(['user', 'view']);
+        $this->middleware(['permission:add links'])->only(['create']);
+        $this->middleware(['permission:edit links'])->only(['edit']);
+    }
+
     public function index()
     {
         return view('backend.short-link.index');
+    }
+
+    public function user()
+    {
+        return view('backend.short-link.user-link');
     }
 
     public function create()

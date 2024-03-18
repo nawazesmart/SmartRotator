@@ -40,6 +40,7 @@ Route::middleware(['auth', 'verify'])->group(function () {
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
     Route::resource('settings/roles', RoleController::class);
     Route::get('short-links', [ShortLinkController::class, 'index'])->name('links.index');
+    Route::get('links', [ShortLinkController::class, 'user'])->name('links.user');
     Route::get('short-links/create', [ShortLinkController::class, 'create'])->name('links.create');
     Route::get('short-links/{id}/view', [ShortLinkController::class, 'view'])->name('links.view');
     Route::get('short-links/{id}/edit', [ShortLinkController::class, 'edit'])->name('links.edit');

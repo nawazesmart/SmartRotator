@@ -242,7 +242,7 @@
                                     <div class="flex-shrink-0 me-1 pe-1">
                                         @if ($user->image == null)
                                         <div class="avatar @if ($user->last_activity >= now()->subMinutes(1)) avatar-online @else @endif">
-                                            <div class="avatar-initial bg-label-primary rounded-circle">M</div>
+                                            <div class="avatar-initial bg-label-primary rounded-circle">{{ Str::limit(ucwords($user->name), 1, '') }}</div>
                                         </div>
                                         @else
                                         <div class="avatar @if ($user->last_activity >= now()->subMinutes(1)) avatar-online @else @endif">

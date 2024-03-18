@@ -106,6 +106,14 @@
         <li class="menu-item {{ Request::routeIs('links.index') ? 'active' : '' }}">
             <a href="{{ route('links.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons mdi mdi-link-variant"></i>
+                <div data-i18n="Analytics">All Short Link</div>
+            </a>
+        </li>
+        @endcan
+        @can('view links')
+        <li class="menu-item {{ Request::routeIs('links.user') ? 'active' : '' }}">
+            <a href="{{ route('links.user') }}" class="menu-link">
+                <i class="menu-icon tf-icons mdi mdi-link-variant"></i>
                 <div data-i18n="Analytics">Short Link</div>
             </a>
         </li>
