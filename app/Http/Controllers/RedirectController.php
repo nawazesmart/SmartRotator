@@ -27,7 +27,19 @@ class RedirectController extends Controller
 
                             $item->increment('click');
 
-                            return redirect($item->link);
+                            if ($short_link->type == 'direct') {
+                                $data['link'] = $item->link;
+                                // dd($data['link']);
+                                return view('backend.redirect.direct', $data);
+                            } elseif ($short_link->type == 'frame') {
+                                $data['link'] = $item->link;
+                                // dd($data['link']);
+                                return view('backend.redirect.frame', $data);
+                            } else {
+                                $data['link'] = $item->link;
+                                // dd($data['link']);
+                                return view('backend.redirect.counter', $data);
+                            }
                         } else {
                             return back()->with('error', 'The link is deactive');
                         }

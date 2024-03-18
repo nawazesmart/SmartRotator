@@ -49,7 +49,7 @@
                             <th>SL</th>
                             <th>Link Name</th>
                             <th>Short Link</th>
-                            <th>Description</th>
+                            <th>Type</th>
                             <th>Status</th>
                             <th>Create Date</th>
                             <th>Action</th>
@@ -61,12 +61,12 @@
                             <td>{{ ++$key }}</td>
                             <td>{{ $short_link->name }}</td>
                             <td>
-                                <a target="_blank" href="{{ route('redirect.link', $short_link->main_link) }}">{{ url('').'/'.$short_link->main_link }}</a>
+                                <a target="_blank" href="{{url('').'/'.$short_link->main_link}}">{{ url('').'/'.$short_link->main_link }}</a>
                                 <a type="button" wire:click="copyLink('{{url('').'/'.$short_link->main_link}}')" class="align-bottom waves-effect">
                                     <i class="tf-icons mdi mdi-content-copy"></i>
                                 </a>
                             </td>
-                            <td>{{ ($short_link->description == null) ? 'N/A' : Str::limit($short_link->description, 17, '...') }}</td>
+                            <td>{{ ucwords($short_link->type) }}</td>
                             <td>
                                 @if ($short_link->status == "1")
                                     <span class="badge bg-label-success">Active</span>

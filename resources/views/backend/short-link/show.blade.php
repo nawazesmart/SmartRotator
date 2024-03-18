@@ -18,7 +18,7 @@
 
                             <dt class="col-sm-3">Short Link</dt>
                             <dd class="col-sm-9">
-                                : &nbsp;&nbsp;<a target="_blank" href="{{ route('redirect.link', $link->main_link) }}">{{ url('').'/'.$link->main_link }}</a>
+                                : &nbsp;&nbsp;<a target="_blank" href="{{url('').'/'.$link->main_link}}">{{ url('').'/'.$link->main_link }}</a>
                                 <a type="button" onclick="copyLink('{{url('').'/'.$link->main_link}}')" class="align-bottom waves-effect">
                                     <i class="tf-icons mdi mdi-content-copy"></i>
                                 </a>
@@ -27,6 +27,11 @@
                             <dt class="col-sm-3">Description</dt>
                             <dd class="col-sm-9">
                                 : &nbsp;&nbsp;{{ ($link->description == null) ? 'N/A' : $link->description }}
+                            </dd>
+
+                            <dt class="col-sm-3">Type</dt>
+                            <dd class="col-sm-9">
+                                : &nbsp;&nbsp;{{ ucwords($link->type) }}
                             </dd>
 
                             <dt class="col-sm-3">Clicks</dt>

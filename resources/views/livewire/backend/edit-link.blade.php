@@ -16,17 +16,17 @@
                 @endif
             </div>
             <div class="col-md-4 mb-4">
-                <div class="mb-3">
+                <div class="mb-2">
                     <label for="linkname" class="form-label">Link Name</label>
                     <input type="text" wire:model.live="link_name" class="form-control" id="linkname" placeholder="Link Name">
                     @error('link_name')<small class="text-danger">{{ $message }}</small>@enderror
                 </div>
-                <div class="mb-3">
+                <div class="mb-2">
                     <label for="description" class="form-label">Description</label>
                     <textarea type="text" wire:model.live="description" class="form-control" id="description" placeholder="Description"></textarea>
                     @error('description')<small class="text-danger">{{ $message }}</small>@enderror
                 </div>
-                <div class="mb-3">
+                <div class="mb-2">
                     <label for="defaultSelect" class="form-label">Type</label>
                     <select id="defaultSelect" wire:model.live="type" class="form-select">
                         <option value="direct">Direct</option>
@@ -34,14 +34,14 @@
                         <option value="counter">Counter</option>
                     </select>
                 </div>
-                <div class="mb-3">
+                <div class="mb-2">
                     <div class="form-check form-switch">
                         <input class="form-check-input" wire:model.live="custom_url" type="checkbox" checked id="flexSwitchCheckDefault">
                         <label class="form-check-label" for="flexSwitchCheckDefault">Custom URL</label>
                     </div>
                 </div>
                 @if ($custom_url == 1)
-                <div class="mb-3">
+                <div class="mb-2">
                     <div class="input-group input-group-merge">
                         <span class="input-group-text" id="basic-addon34">{{ url('') }}/</span>
                         <input type="text" wire:model.live="short_link" class="form-control" id="short">
@@ -49,7 +49,7 @@
                     @error('short_link')<small class="text-danger">{{ $message }}</small>@enderror
                 </div>
                 @endif
-                <div class="mb-3">
+                <div class="mb-2">
                     <button class="btn btn-primary w-100" type="submit"> Update</button>
                 </div>
             </div>
