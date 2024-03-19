@@ -5,17 +5,23 @@ namespace App\Livewire\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Livewire\Attributes\Rule;
 use Livewire\Component;
 
 class ChangePassword extends Component
 {
+    #[Rule([
+        'new_password' => ['required'],
+        're_new_password' => ['required', 'same:new_password'],
+    ])]
+
     public $id, $token, $new_password, $re_new_password;
 
     public function change_password()
     {
         $this->validate([
-            'new_password' => 'required|same:re_new_password',
-            're_new_password' => 'required',
+            'new_password' => 'required',
+            're_new_password' => 'required|same:new_password',
         ]);
 
         $id = $this->id;
