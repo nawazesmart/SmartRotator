@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Mail\EmailVerifyMail;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
 class ForgotPasswordController extends Controller
@@ -29,13 +31,13 @@ class ForgotPasswordController extends Controller
         $email = $user->email;
         $name = $user->name;
         $title = 'Reset Password';
-        return redirect()->route('forgotPasswordVerification', ['id' => $id, 'token' => $token])->with('success', 'Email send successfully.');
-        // $result = Mail::to($email)->send(new EmailVerifyMail($email, $title, $name, $otp));
-        // if($result){
-        //     return redirect()->route('forgotPasswordVerification', ['id' => $id, 'token' => $token])->with('success','Email send successfully.');
-        // }else{
-        //     return back()->with('error','Something is Worng!');
-        // }
+        // return redirect()->route('forgotPasswordVerification', ['id' => $id, 'token' => $token])->with('success', 'Email send successfully.');
+        $result = Mail::to($email)->send(new EmailVerifyMail($email, $title, $name, $otp));
+        if ($result) {
+            return redirect()->route('forgotPasswordVerification', ['id' => $id, 'token' => $token])->with('success', 'Email send successfully.');
+        } else {
+            return back()->with('error', 'Something is Worng!');
+        }
     }
 
 

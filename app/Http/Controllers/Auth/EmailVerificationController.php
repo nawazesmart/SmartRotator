@@ -44,12 +44,12 @@ class EmailVerificationController extends Controller
         $name = $user->name;
         $email = $user->email;
         $title = 'Email Verification';
-        return redirect()->route('verification', ['id' => $id, 'token' => $token])->with('success', 'Email send successfully.');
-        // $result = Mail::to($email)->send(new EmailVerifyMail($email, $title, $name, $otp));
-        // if ($result) {
-        //     return redirect()->route('verification', ['id' => $id, 'token' => $token])->with('success', 'Email send successfully.');
-        // } else {
-        //     return back()->with('error', 'Something is Worng!');
-        // }
+        // return redirect()->route('verification', ['id' => $id, 'token' => $token])->with('success', 'Email send successfully.');
+        $result = Mail::to($email)->send(new EmailVerifyMail($email, $title, $name, $otp));
+        if ($result) {
+            return redirect()->route('verification', ['id' => $id, 'token' => $token])->with('success', 'Email send successfully.');
+        } else {
+            return back()->with('error', 'Something is Worng!');
+        }
     }
 }
